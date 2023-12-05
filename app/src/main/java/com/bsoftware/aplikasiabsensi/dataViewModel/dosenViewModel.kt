@@ -15,7 +15,7 @@ class dosenViewModel : ViewModel() {
     private val mutableListDosenData = MutableLiveData<List<DosenDataClass>>()
     val livedataDosenData : LiveData<List<DosenDataClass>> = mutableListDosenData
 
-    private val connectionStatus : Boolean = false;
+    private var connectionStatus : Boolean = false;
 
     // read data dosen in here
     fun readDataDosen(){
@@ -26,6 +26,7 @@ class dosenViewModel : ViewModel() {
             } catch (e : Exception){
                 Log.e("readDataDosen() Exception", e.toString())
                 // setconnectionstatus in here
+                setConnection(false)
             }
         }
     }
@@ -61,5 +62,13 @@ class dosenViewModel : ViewModel() {
                 Log.e("deleteDataDosenByNidn() Exception", e.toString())
             }
         }
+    }
+
+    private fun setConnection(isConnection : Boolean){
+        connectionStatus = isConnection
+    }
+
+    fun getConnectionStatus() : Boolean{
+        return connectionStatus
     }
 }
