@@ -20,8 +20,14 @@ interface DosenDatabaseAPI {
         @Field("Nama") nama : String?,
         @Field("MataKuliah") matakuliah : String?,
         @Field("JurusanMengajar") jurusanMengajar : String?,
-        @Field("Keterangan") keterangan : String?,
-        @Field("Tanggal") tanggal : String?
+        @Field("Hadir") hadir : String?,
+        @Field("Sakit") sakit : String?,
+        @Field("Izin") izin : String?,
+        @Field("Alpha") alpha : String?,
+        @Field("JamMasuk") jammasuk : String?,
+        @Field("JamKeluar") jamkeluar : String?,
+        @Field("Tanggal") tanggal : String?,
+        @Field("TanggalTidakHadir") tanggaltidakhadir : String?
     ) : Response<DosenDataClass>
 
     @FormUrlEncoded
@@ -31,8 +37,14 @@ interface DosenDatabaseAPI {
         @Field("Nama") nama : String?,
         @Field("MataKuliah") matakuliah : String?,
         @Field("JurusanMengajar") jurusanMengajar : String?,
-        @Field("Keterangan") keterangan : String?,
-        @Field("Tanggal") tanggal : String?
+        @Field("Hadir") hadir : String?,
+        @Field("Sakit") sakit : String?,
+        @Field("Izin") izin : String?,
+        @Field("Alpha") alpha : String?,
+        @Field("JamMasuk") jammasuk : String?,
+        @Field("JamKeluar") jamkeluar : String?,
+        @Field("Tanggal") tanggal : String?,
+        @Field("TanggalTidakHadir") tanggaltidakhadir : String?
     ) : Response<DosenDataClass>
 
     @DELETE("Delete.php")

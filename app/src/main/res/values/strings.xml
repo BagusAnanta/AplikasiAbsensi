@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AplikasiAbsensi</string>
     <string name="title_activity_sign_in_mahasiswa">SignInMahasiswaActivity</string>
+    <string name="title_activity_main_menu">MainActivityMenu</string>
 </resources>

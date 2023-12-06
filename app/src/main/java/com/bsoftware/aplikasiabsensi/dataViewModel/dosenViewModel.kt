@@ -32,10 +32,23 @@ class dosenViewModel : ViewModel() {
     }
 
     // create data dosen in here
-    fun createDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, keterangan : String?, tanggal : String?){
+    fun createDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, hadir : String?, sakit : String?, izin : String?, alpha : String?, jammasuk : String?,jamkeluar : String?,tanggal : String?,tanggaltidakhadir : String?){
         viewModelScope.launch {
             try {
-                val createDosenData = apiInterfaceDosen.createDosenData(nidn,nama,matakuliah,jurusanmengajar,keterangan,tanggal)
+                val createDosenData = apiInterfaceDosen.createDosenData(
+                    nidn,
+                    nama,
+                    matakuliah,
+                    jurusanmengajar,
+                    hadir,
+                    sakit,
+                    izin,
+                    alpha,
+                    jammasuk,
+                    jamkeluar,
+                    tanggal,
+                    tanggaltidakhadir
+                )
             } catch (e : Exception){
                 Log.e("createDataDosen() Exception", e.toString())
             }
@@ -43,10 +56,23 @@ class dosenViewModel : ViewModel() {
     }
 
     // update data dosen in here
-    fun updateDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, keterangan : String?, tanggal : String?){
+    fun updateDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, hadir : String?, sakit : String?, izin : String?, alpha : String?, jammasuk : String?,jamkeluar : String?,tanggal : String?,tanggaltidakhadir : String?){
         viewModelScope.launch {
             try{
-                val updateDosenData = apiInterfaceDosen.updateDosenData(nidn,nama,matakuliah,jurusanmengajar,keterangan,tanggal)
+                val updateDosenData = apiInterfaceDosen.updateDosenData(
+                    nidn,
+                    nama,
+                    matakuliah,
+                    jurusanmengajar,
+                    hadir,
+                    sakit,
+                    izin,
+                    alpha,
+                    jammasuk,
+                    jamkeluar,
+                    tanggal,
+                    tanggaltidakhadir
+                )
             } catch (e : Exception){
                 Log.e("updateDataDosen() Exception", e.toString())
             }
