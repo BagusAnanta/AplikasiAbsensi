@@ -3,10 +3,22 @@ package com.bsoftware.aplikasiabsensi
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,6 +53,7 @@ fun MainUi(){
     Column(
         modifier = Modifier
             .padding(10.dp)
+            .fillMaxSize()
     ){
         Column {
             Text(
@@ -56,6 +69,55 @@ fun MainUi(){
                     fontSize = 15.sp
                 )
             )
+        }
+
+        Card(
+            modifier = Modifier
+                .padding(10.dp)
+                .fillMaxWidth()
+                .height(200.dp),
+            shape = RoundedCornerShape(20.dp),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 6.dp
+            )
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxSize()
+            ) {
+                Text(
+                    text = "Kartu Absensi",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+                Text(
+                    text = "Silahkan Pilih Absensi Anda",
+                    modifier = Modifier
+                        .padding(top = 5.dp)
+                )
+
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ){
+                    items(4){ index ->
+                        Button(
+                            onClick = { /*TODO*/ },
+                            modifier = Modifier.size(110.dp,100.dp),
+                            shape = RoundedCornerShape(20.dp),
+                            elevation = ButtonDefaults.buttonElevation(
+                                defaultElevation = 6.dp
+                            )
+                        ) {
+
+                        }
+                    }
+                }
+            }
         }
     }
 }
