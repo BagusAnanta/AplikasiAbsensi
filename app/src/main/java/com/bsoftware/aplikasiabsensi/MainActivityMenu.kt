@@ -73,7 +73,7 @@ fun MainUi(){
 
         Card(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(start = 10.dp, end = 10.dp, top = 30.dp)
                 .fillMaxWidth()
                 .height(200.dp),
             shape = RoundedCornerShape(20.dp),
