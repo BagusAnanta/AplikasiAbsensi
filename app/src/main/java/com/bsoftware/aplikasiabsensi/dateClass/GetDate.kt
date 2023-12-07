@@ -1,17 +1,13 @@
 package com.bsoftware.aplikasiabsensi.dateClass
 
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class GetDate {
-    val currentDate = Date()
 
-    // get date now
-    fun getDateNow() : String? {
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-        return dateFormat.format(dateFormat)
+    fun getDateNow() : String?{
+        val date = LocalDate.now()
+        val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        return date.format(dateFormatter)
     }
-
-
 }
