@@ -3,10 +3,12 @@ package com.bsoftware.aplikasiabsensi
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,9 +24,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bsoftware.aplikasiabsensi.dataViewModel.DosenViewModel
+import com.bsoftware.aplikasiabsensi.dateClass.GetDate
 import com.bsoftware.aplikasiabsensi.ui.theme.AplikasiAbsensiTheme
 
 class CreateDosenActivity : ComponentActivity() {
+
+    private val dosenViewModel : DosenViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,7 +40,7 @@ class CreateDosenActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CreatePage()
+                    CreatePage(dosenViewModel)
                 }
             }
         }
@@ -43,15 +49,23 @@ class CreateDosenActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreatePage(){
+fun CreatePage(dosenviewmodel : DosenViewModel = DosenViewModel()){
     // in here we decrare remember mutablestate
-    // in "Hadir","Sakit","Izin","Alpha","tangga" we set a default 0, except tanggal, you can use function getDate
+    // in "Hadir","Sakit","Izin","Alpha","tanggal","tanggal tidak masuk" we set a default 0, except tanggal, you can use function getDate
     var nidn by remember{ mutableStateOf("") }
     var nama by remember{ mutableStateOf("") }
     var matakuliah by remember { mutableStateOf("") }
     var jurusanmengajar by remember { mutableStateOf("") }
     var jammasuk by remember { mutableStateOf("") }
     var jamkeluar by remember { mutableStateOf("") }
+
+    // default value
+    val hadir : String? = "0"
+    val sakit : String? = "0"
+    val izin : String? = "0"
+    val alpha : String? = "0"
+    val tanggal : String? = GetDate().getDateNow()
+    val tanggaltidakmasuk : String? = "-"
 
     Column(
         modifier = Modifier
@@ -147,6 +161,29 @@ fun CreatePage(){
                 .fillMaxWidth()
                 .padding(top = 10.dp)
         )
+        Button(
+            onClick = {
+                dosenviewmodel.createDataDosen(
+                    nidn = nidn,
+                    nama = nama,
+                    matakuliah = matakuliah,
+                    jurusanmengajar = jurusanmengajar,
+                    hadir = hadir,
+                    sakit = sakit,
+                    izin = izin,
+                    alpha = alpha,
+                    jammasuk = jammasuk,
+                    jamkeluar = jamkeluar,
+                    tanggal = tanggal,
+                    tanggaltidakhadir = tanggaltidakmasuk
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp)
+        ) {
+            Text(text = "Tambah Data")
+        }
 
 
     }
