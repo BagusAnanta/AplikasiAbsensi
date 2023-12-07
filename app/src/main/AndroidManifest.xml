@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,26 @@
         android:theme="@style/Theme.AplikasiAbsensi"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".DeleteDosenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_delete_dosen"
+            android:theme="@style/Theme.AplikasiAbsensi" />
+        <activity
+            android:name=".UpdateDosenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_update_dosen"
+            android:theme="@style/Theme.AplikasiAbsensi" />
+        <activity
+            android:name=".ReadDosenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_read_dosen"
+            android:theme="@style/Theme.AplikasiAbsensi" />
+        <activity
+            android:name=".CreateDosenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_create_dosen"
+            android:theme="@style/Theme.AplikasiAbsensi" />
         <activity
             android:name=".HomeAdminActivity"
             android:exported="false"

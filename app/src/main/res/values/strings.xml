@@ -5,4 +5,8 @@
     <string name="title_activity_sign_in_admin">SignInAdminActivity</string>
     <string name="title_activity_option">OptionActivity</string>
     <string name="title_activity_admin_main">AdminMainActivity</string>
+    <string name="title_activity_create_dosen">CreateDosenActivity</string>
+    <string name="title_activity_read_dosen">ReadDosenActivity</string>
+    <string name="title_activity_update_dosen">UpdateDosenActivity</string>
+    <string name="title_activity_delete_dosen">DeleteDosenActivity</string>
 </resources>
