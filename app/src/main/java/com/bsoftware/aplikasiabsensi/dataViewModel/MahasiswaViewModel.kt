@@ -10,7 +10,7 @@ import com.bsoftware.aplikasiabsensi.databaseAPIInterface.MahasiswaDatabaseAPI
 import com.bsoftware.aplikasiabsensi.retrofitInit.RetrofitInitial
 import kotlinx.coroutines.launch
 
-class mahasiswaViewModel : ViewModel() {
+class MahasiswaViewModel : ViewModel() {
     private val apiInterfaceMahasiswa = RetrofitInitial().retrofitMahasiswa.create(MahasiswaDatabaseAPI::class.java)
     private val mutableListMahasiswaData = MutableLiveData<List<MahasiswaDataClass>>()
     val livedataMahasiswaData : LiveData<List<MahasiswaDataClass>> = mutableListMahasiswaData

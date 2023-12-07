@@ -2,9 +2,12 @@ package com.bsoftware.aplikasiabsensi
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,9 +36,14 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import com.bsoftware.aplikasiabsensi.dataViewModel.AdminViewModel
 import com.bsoftware.aplikasiabsensi.ui.theme.AplikasiAbsensiTheme
 
-class SignInDosenActivity : ComponentActivity() {
+class SignInAdminActivity : ComponentActivity() {
+
+    private val adminViewModel : AdminViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -45,7 +53,7 @@ class SignInDosenActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SignInPageDosen()
+                   SignInPageAdmin(adminViewModel = adminViewModel, lifecycleOwner = this)
                 }
             }
         }
@@ -54,9 +62,12 @@ class SignInDosenActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignInPageDosen(){
-    var name by remember {mutableStateOf("")}
-    var nidn by remember { mutableStateOf("") }
+fun SignInPageAdmin(adminViewModel : AdminViewModel, lifecycleOwner: LifecycleOwner){
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+    var usernameData : String?
+    var passwordData : String?
 
     val focusmanager = LocalFocusManager.current
     val context : Context = LocalContext.current
@@ -69,13 +80,13 @@ fun SignInPageDosen(){
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextField(
-            value = name,
-            onValueChange = {name = it},
+            value = username,
+            onValueChange = {username = it},
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
                 Text(
-                    text = "Name",
+                    text = "Username",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold
                     )
@@ -87,21 +98,21 @@ fun SignInPageDosen(){
             )
         )
         TextField(
-            value = nidn,
-            onValueChange = {nidn = it},
+            value = password,
+            onValueChange = {password = it},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 10.dp),
             label = {
                 Text(
-                    text = "NIDN",
+                    text = "Password",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold
                     )
                 )
             },
             keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number,
+                keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done
             ),
             keyboardActions = KeyboardActions(
@@ -110,7 +121,25 @@ fun SignInPageDosen(){
         )
 
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                adminViewModel.livedataAdminData.observe(lifecycleOwner, Observer { admindata ->
+                    for(admin in admindata){
+                        usernameData = admin.username
+                        passwordData = admin.password
+
+                        if(username == usernameData && password == passwordData){
+                            // if a username and password equals like database we intent to admin
+                            context.startActivity(Intent(context,HomeAdminActivity::class.java))
+                            activity?.finish()
+
+                        } else {
+                            // toast username and password wrong
+                            Toast.makeText(context,"You Username and Password Incorrect, please try again", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+                adminViewModel.readDataAdmin()
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 10.dp)
@@ -125,12 +154,10 @@ fun SignInPageDosen(){
     }
 }
 
-
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun SignInDosenPreview() {
+fun SignInAdminPreview() {
     AplikasiAbsensiTheme {
-        SignInPageDosen()
+        // SignInPageAdmin()
     }
 }
