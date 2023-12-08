@@ -51,7 +51,7 @@ class HomeAdminActivity : ComponentActivity() {
 
 @Composable
 fun HomeAdminPage(){
-    val name = "Bagus"
+    val name = "User"
 
     val context : Context = LocalContext.current
     val activity : Activity? = (LocalContext.current as? Activity)
@@ -123,7 +123,6 @@ fun HomeAdminPage(){
                                                 CreateDosenActivity::class.java
                                             )
                                         )
-                                        activity?.finish()
                                     },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
@@ -146,7 +145,6 @@ fun HomeAdminPage(){
                                                 ReadDosenActivity::class.java
                                             )
                                         )
-                                        activity?.finish()
                                     },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
@@ -174,7 +172,6 @@ fun HomeAdminPage(){
                                                 UpdateDosenActivity::class.java
                                             )
                                         )
-                                        activity?.finish()
                                     },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
@@ -197,7 +194,6 @@ fun HomeAdminPage(){
                                                 DeleteDosenActivity::class.java
                                             )
                                         )
-                                        activity?.finish()
                                     },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White

@@ -93,6 +93,12 @@ class DosenViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val deleteDosenData = apiInterfaceDosen.deleteDosenDataByNidn(nidn)
+                if(deleteDosenData.isSuccessful){
+                    // if delet successfull
+                    readDataDosen()
+                } else {
+                    Log.e("DeleteDataDosenByNidn() Error", "Error While Delete a data")
+                }
             } catch (e : Exception){
                 Log.e("deleteDataDosenByNidn() Exception", e.toString())
             }

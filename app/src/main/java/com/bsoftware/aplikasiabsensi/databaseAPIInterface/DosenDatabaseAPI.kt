@@ -7,6 +7,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface DosenDatabaseAPI {
 
@@ -47,7 +48,8 @@ interface DosenDatabaseAPI {
         @Field("TanggalTidakHadir") tanggaltidakhadir : String?
     ) : Response<DosenDataClass>
 
-    @DELETE("Delete.php")
+    @FormUrlEncoded
+    @POST("Delete.php")
     suspend fun deleteDosenDataByNidn(
         @Field("NIDN") nidn : String?
     ) : Response<DosenDataClass>
