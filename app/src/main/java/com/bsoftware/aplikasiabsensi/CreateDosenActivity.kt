@@ -12,9 +12,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -29,6 +33,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bsoftware.aplikasiabsensi.dataViewModel.DosenViewModel
 import com.bsoftware.aplikasiabsensi.dateClass.GetDate
 import com.bsoftware.aplikasiabsensi.ui.theme.AplikasiAbsensiTheme
@@ -78,126 +83,150 @@ fun CreatePage(dosenviewmodel : DosenViewModel = DosenViewModel()){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(20.dp)
     ) {
-        TextField(
-            value = nidn,
-            onValueChange = {nidn = it},
-            label = {
-                Text(
-                    text = "Masukkan NIDN",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
+        Column{
+            Text(
+                text = "Buat Data Dosen",
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
                 )
-            },
-            modifier = Modifier.fillMaxWidth()
-
-        )
-        TextField(
-            value = nama,
-            onValueChange = {nama = it},
-            label = {
-                Text(
-                    text = "Masukkan Nama Dosen",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
+            )
+            Text(
+                text = "Isi Data Dosen Dibawah ini dengan sesuai",
+                style = TextStyle(
+                    fontSize = 15.sp
                 )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = matakuliah,
-            onValueChange = {matakuliah = it},
-            label = {
-                Text(
-                    text = "Masukkan Matakuliah",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = jurusanmengajar,
-            onValueChange = {jurusanmengajar = it},
-            label = {
-                Text(
-                    text = "Masukkan Jurusan Mengajar",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = jammasuk,
-            onValueChange = {jammasuk = it},
-            label = {
-                Text(
-                    text = "Masukkan Jam Masuk",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = jamkeluar,
-            onValueChange = {jamkeluar = it},
-            label = {
-                Text(
-                    text = "Masukkan Jam Keluar",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        Button(
-            onClick = {
-                dosenviewmodel.createDataDosen(
-                    nidn = nidn,
-                    nama = nama,
-                    matakuliah = matakuliah,
-                    jurusanmengajar = jurusanmengajar,
-                    hadir = hadir,
-                    sakit = sakit,
-                    izin = izin,
-                    alpha = alpha,
-                    jammasuk = jammasuk,
-                    jamkeluar = jamkeluar,
-                    tanggal = tanggal,
-                    tanggaltidakhadir = tanggaltidakmasuk
-                )
-                // intent back into homeAdminActivity
-                Toast.makeText(context,"Data Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
-                context.startActivity(Intent(context,HomeAdminActivity::class.java))
-                activity?.finish()
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        ) {
-            Text(text = "Tambah Data")
+            )
         }
 
+        Column(
+            modifier = Modifier.padding(top = 30.dp)
+        ) {
+            OutlinedTextField(
+                value = nidn,
+                onValueChange = {nidn = it},
+                label = {
+                    Text(
+                        text = "Masukkan NIDN",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(10.dp),
 
+            )
+            OutlinedTextField(
+                value = nama,
+                onValueChange = {nama = it},
+                label = {
+                    Text(
+                        text = "Masukkan Nama Dosen",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp),
+                shape = RoundedCornerShape(10.dp)
+            )
+            OutlinedTextField(
+                value = matakuliah,
+                onValueChange = {matakuliah = it},
+                label = {
+                    Text(
+                        text = "Masukkan Matakuliah",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp),
+                shape = RoundedCornerShape(10.dp)
+            )
+            OutlinedTextField(
+                value = jurusanmengajar,
+                onValueChange = {jurusanmengajar = it},
+                label = {
+                    Text(
+                        text = "Masukkan Jurusan Mengajar",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp),
+                shape = RoundedCornerShape(10.dp)
+            )
+            OutlinedTextField(
+                value = jammasuk,
+                onValueChange = {jammasuk = it},
+                label = {
+                    Text(
+                        text = "Masukkan Jam Masuk",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp),
+                shape = RoundedCornerShape(10.dp)
+            )
+            OutlinedTextField(
+                value = jamkeluar,
+                onValueChange = {jamkeluar = it},
+                label = {
+                    Text(
+                        text = "Masukkan Jam Keluar",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp),
+                shape = RoundedCornerShape(10.dp)
+            )
+            Button(
+                onClick = {
+                    dosenviewmodel.createDataDosen(
+                        nidn = nidn,
+                        nama = nama,
+                        matakuliah = matakuliah,
+                        jurusanmengajar = jurusanmengajar,
+                        hadir = hadir,
+                        sakit = sakit,
+                        izin = izin,
+                        alpha = alpha,
+                        jammasuk = jammasuk,
+                        jamkeluar = jamkeluar,
+                        tanggal = tanggal,
+                        tanggaltidakhadir = tanggaltidakmasuk
+                    )
+                    // intent back into homeAdminActivity
+                    Toast.makeText(context,"Data Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                    context.startActivity(Intent(context,HomeAdminActivity::class.java))
+                    activity?.finish()
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp)
+            ) {
+                Text(text = "Tambah Data")
+            }
+        }
     }
 }
 

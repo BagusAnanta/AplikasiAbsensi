@@ -14,6 +14,33 @@ interface DosenDatabaseAPI {
     @GET("Read.php")
     suspend fun readDosenData() : List<DosenDataClass>
 
+    @GET("ReadNidnName.php")
+    suspend fun readDosenNidnNama() : List<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("ReadHadir.php")
+    suspend fun readHadirWithNidn(
+        @Field("NIDN") nidn : String?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("ReadIzin.php")
+    suspend fun readIzinWithNidn(
+        @Field("NIDN") nidn : String?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("ReadSakit.php")
+    suspend fun readSakitWithNidn(
+        @Field("NIDN") nidn : String?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("ReadAlpha.php")
+    suspend fun readAlphaWithNidn(
+        @Field("NIDN") nidn : String?
+    ) : Response<DosenDataClass>
+
     @FormUrlEncoded
     @POST("Create.php")
     suspend fun createDosenData(
@@ -46,6 +73,34 @@ interface DosenDatabaseAPI {
         @Field("JamKeluar") jamkeluar : String?,
         @Field("Tanggal") tanggal : String?,
         @Field("TanggalTidakHadir") tanggaltidakhadir : String?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("UpdateHadir.php")
+    suspend fun updateHadir(
+        @Field("NIDN") nidn: String?,
+        @Field("Hadir") hadir: Int?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("UpdateSakit.php")
+    suspend fun updateSakit(
+        @Field("NIDN") nidn: String?,
+        @Field("Sakit") sakit: Int?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("UpdateIzin.php")
+    suspend fun updateIzin(
+        @Field("NIDN") nidn: String?,
+        @Field("Izin") izin: Int?
+    ) : Response<DosenDataClass>
+
+    @FormUrlEncoded
+    @POST("UpdateAlpha.php")
+    suspend fun updateAlpha(
+        @Field("NIDN") nidn: String?,
+        @Field("Alpha") alpha: Int?
     ) : Response<DosenDataClass>
 
     @FormUrlEncoded

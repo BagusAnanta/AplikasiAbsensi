@@ -13,9 +13,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bsoftware.aplikasiabsensi.dataViewModel.DosenViewModel
 import com.bsoftware.aplikasiabsensi.dateClass.GetDate
 import com.bsoftware.aplikasiabsensi.ui.theme.AplikasiAbsensiTheme
@@ -75,11 +78,30 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(20.dp)
     ) {
-       LazyColumn{
+
+        Column{
+            Text(
+                text = "Ubah Data Dosen",
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+            Text(
+                text = "Ubah data dosen sesuai dengan field yang sesuai, dan gunakan NIDN yang sesuai dengan sebelumnya",
+                style = TextStyle(
+                    fontSize = 15.sp
+                )
+            )
+        }
+
+       LazyColumn(
+           modifier = Modifier.padding(top = 30.dp)
+       ){
            item {
-               TextField(
+               OutlinedTextField(
                    value = nidn,
                    onValueChange = {nidn = it},
                    label = {
@@ -90,10 +112,12 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                            )
                        )
                    },
-                   modifier = Modifier.fillMaxWidth()
+                   modifier = Modifier.fillMaxWidth(),
+                   shape = RoundedCornerShape(10.dp),
+
 
                )
-               TextField(
+               OutlinedTextField(
                    value = nama,
                    onValueChange = {nama = it},
                    label = {
@@ -106,9 +130,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = matakuliah,
                    onValueChange = {matakuliah = it},
                    label = {
@@ -121,9 +146,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = jurusanmengajar,
                    onValueChange = {jurusanmengajar = it},
                    label = {
@@ -136,9 +162,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = hadir,
                    onValueChange = {hadir = it},
                    label = {
@@ -151,9 +178,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = sakit,
                    onValueChange = {sakit = it},
                    label = {
@@ -166,9 +194,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = izin,
                    onValueChange = {izin = it},
                    label = {
@@ -181,9 +210,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = alpha,
                    onValueChange = {alpha = it},
                    label = {
@@ -196,9 +226,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = jammasuk,
                    onValueChange = {jammasuk = it},
                    label = {
@@ -211,9 +242,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = jamkeluar,
                    onValueChange = {jamkeluar = it},
                    label = {
@@ -226,9 +258,10 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
-               TextField(
+               OutlinedTextField(
                    value = tanggaltidakhadir,
                    onValueChange = {tanggaltidakhadir = it},
                    label = {
@@ -241,7 +274,8 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                    },
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(top = 10.dp)
+                       .padding(top = 10.dp),
+                   shape = RoundedCornerShape(10.dp),
                )
                Button(
                    onClick = {
