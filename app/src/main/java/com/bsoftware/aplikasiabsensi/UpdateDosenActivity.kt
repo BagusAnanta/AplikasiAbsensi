@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -69,193 +70,197 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
             .fillMaxWidth()
             .padding(10.dp)
     ) {
-        TextField(
-            value = nidn,
-            onValueChange = {nidn = it},
-            label = {
-                Text(
-                    text = "Masukkan NIDN",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier.fillMaxWidth()
+       LazyColumn{
+           item {
+               TextField(
+                   value = nidn,
+                   onValueChange = {nidn = it},
+                   label = {
+                       Text(
+                           text = "Masukkan NIDN",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier.fillMaxWidth()
 
-        )
-        TextField(
-            value = nama,
-            onValueChange = {nama = it},
-            label = {
-                Text(
-                    text = "Masukkan Nama Dosen",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = matakuliah,
-            onValueChange = {matakuliah = it},
-            label = {
-                Text(
-                    text = "Masukkan Matakuliah",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = jurusanmengajar,
-            onValueChange = {jurusanmengajar = it},
-            label = {
-                Text(
-                    text = "Masukkan Jurusan Mengajar",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = hadir,
-            onValueChange = {hadir = it},
-            label = {
-                Text(
-                    text = "Masukkan jumlah hadir (angka)",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = sakit,
-            onValueChange = {sakit = it},
-            label = {
-                Text(
-                    text = "Masukkan jumlah sakit (angka)",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = izin,
-            onValueChange = {izin = it},
-            label = {
-                Text(
-                    text = "Masukkan jumlah izin (angka)",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = alpha,
-            onValueChange = {alpha = it},
-            label = {
-                Text(
-                    text = "Masukkan jumlah alpha (angka)",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = jammasuk,
-            onValueChange = {jammasuk = it},
-            label = {
-                Text(
-                    text = "Masukkan Jam Masuk",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = jamkeluar,
-            onValueChange = {jamkeluar = it},
-            label = {
-                Text(
-                    text = "Masukkan Jam Keluar",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        TextField(
-            value = tanggaltidakhadir,
-            onValueChange = {tanggaltidakhadir = it},
-            label = {
-                Text(
-                    text = "Masukkan tanggal tidak masuk",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        )
-        Button(
-            onClick = {
-                dosenViewModel.updateDataDosen(
-                    nidn = nidn,
-                    nama = nama,
-                    matakuliah = matakuliah,
-                    jurusanmengajar = jurusanmengajar,
-                    hadir = hadir,
-                    sakit = sakit,
-                    izin = izin,
-                    alpha = alpha,
-                    jammasuk = jammasuk,
-                    jamkeluar = jamkeluar,
-                    tanggal = tanggal,
-                    tanggaltidakhadir = tanggaltidakhadir
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp)
-        ) {
-            Text(text = "Update Data")
-        }
+               )
+               TextField(
+                   value = nama,
+                   onValueChange = {nama = it},
+                   label = {
+                       Text(
+                           text = "Masukkan Nama Dosen",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = matakuliah,
+                   onValueChange = {matakuliah = it},
+                   label = {
+                       Text(
+                           text = "Masukkan Matakuliah",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = jurusanmengajar,
+                   onValueChange = {jurusanmengajar = it},
+                   label = {
+                       Text(
+                           text = "Masukkan Jurusan Mengajar",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = hadir,
+                   onValueChange = {hadir = it},
+                   label = {
+                       Text(
+                           text = "Masukkan jumlah hadir (angka)",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = sakit,
+                   onValueChange = {sakit = it},
+                   label = {
+                       Text(
+                           text = "Masukkan jumlah sakit (angka)",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = izin,
+                   onValueChange = {izin = it},
+                   label = {
+                       Text(
+                           text = "Masukkan jumlah izin (angka)",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = alpha,
+                   onValueChange = {alpha = it},
+                   label = {
+                       Text(
+                           text = "Masukkan jumlah alpha (angka)",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = jammasuk,
+                   onValueChange = {jammasuk = it},
+                   label = {
+                       Text(
+                           text = "Masukkan Jam Masuk",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = jamkeluar,
+                   onValueChange = {jamkeluar = it},
+                   label = {
+                       Text(
+                           text = "Masukkan Jam Keluar",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               TextField(
+                   value = tanggaltidakhadir,
+                   onValueChange = {tanggaltidakhadir = it},
+                   label = {
+                       Text(
+                           text = "Masukkan tanggal tidak masuk",
+                           style = TextStyle(
+                               fontWeight = FontWeight.Bold
+                           )
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               )
+               Button(
+                   onClick = {
+                       dosenViewModel.updateDataDosen(
+                           nidn = nidn,
+                           nama = nama,
+                           matakuliah = matakuliah,
+                           jurusanmengajar = jurusanmengajar,
+                           hadir = hadir.toInt(),
+                           sakit = sakit.toInt(),
+                           izin = izin.toInt(),
+                           alpha = alpha.toInt(),
+                           jammasuk = jammasuk,
+                           jamkeluar = jamkeluar,
+                           tanggal = tanggal,
+                           tanggaltidakhadir = tanggaltidakhadir
+                       )
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(top = 10.dp)
+               ) {
+                   Text(text = "Update Data")
+               }
+           }
+       }
     }
 }
 

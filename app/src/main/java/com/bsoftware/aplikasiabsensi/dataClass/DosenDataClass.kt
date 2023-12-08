@@ -3,14 +3,14 @@ package com.bsoftware.aplikasiabsensi.dataClass
 import com.google.gson.annotations.SerializedName
 
 data class DosenDataClass(
-    @SerializedName("NIDN")                 var nim : String?,
+    @SerializedName("NIDN")                 var nidn : String?,
     @SerializedName("Nama")                 var nama : String?,
-    @SerializedName("MataKuliah")           var kelas : String?,
-    @SerializedName("JurusanMengajar")      var jurusan : String?,
-    @SerializedName("Hadir")                var hadir : String?,
-    @SerializedName("Sakit")                var sakit : String?,
-    @SerializedName("Izin")                 var izin : String?,
-    @SerializedName("Alpha")                var alpha : String?,
+    @SerializedName("MataKuliah")           var matakuliah : String?,
+    @SerializedName("JurusanMengajar")      var jurusanmengajar : String?,
+    @SerializedName("Hadir")                var hadir : Int?,
+    @SerializedName("Sakit")                var sakit : Int?,
+    @SerializedName("Izin")                 var izin : Int?,
+    @SerializedName("Alpha")                var alpha : Int?,
     @SerializedName("JamMasuk")             var jammasuk : String?,
     @SerializedName("JamKeluar")            var jamkeluar : String?,
     @SerializedName("Tanggal")              var tanggal : String?,

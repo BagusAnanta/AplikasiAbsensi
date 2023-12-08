@@ -60,10 +60,10 @@ fun CreatePage(dosenviewmodel : DosenViewModel = DosenViewModel()){
     var jamkeluar by remember { mutableStateOf("") }
 
     // default value
-    val hadir : String? = "0"
-    val sakit : String? = "0"
-    val izin : String? = "0"
-    val alpha : String? = "0"
+    val hadir : Int? = 0
+    val sakit : Int? = 0
+    val izin : Int? = 0
+    val alpha : Int? = 0
     val tanggal : String? = GetDate().getDateNow()
     val tanggaltidakmasuk : String? = "-"
 

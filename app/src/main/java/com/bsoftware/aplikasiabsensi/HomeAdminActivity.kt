@@ -1,8 +1,12 @@
 package com.bsoftware.aplikasiabsensi
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,7 +42,7 @@ class HomeAdminActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // Greeting("Android")
+                    HomeAdminPage()
                 }
             }
         }
@@ -47,6 +52,9 @@ class HomeAdminActivity : ComponentActivity() {
 @Composable
 fun HomeAdminPage(){
     val name = "Bagus"
+
+    val context : Context = LocalContext.current
+    val activity : Activity? = (LocalContext.current as? Activity)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -106,7 +114,17 @@ fun HomeAdminPage(){
                             horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             Card(
-                                modifier = Modifier.size(120.dp, 130.dp),
+                                modifier = Modifier
+                                    .size(120.dp, 130.dp)
+                                    .clickable {
+                                        context.startActivity(
+                                            Intent(
+                                                context,
+                                                CreateDosenActivity::class.java
+                                            )
+                                        )
+                                        activity?.finish()
+                                    },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
                                 ),
@@ -119,7 +137,17 @@ fun HomeAdminPage(){
                             }
 
                             Card(
-                                modifier = Modifier.size(120.dp, 130.dp),
+                                modifier = Modifier
+                                    .size(120.dp, 130.dp)
+                                    .clickable {
+                                        context.startActivity(
+                                            Intent(
+                                                context,
+                                                ReadDosenActivity::class.java
+                                            )
+                                        )
+                                        activity?.finish()
+                                    },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
                                 ),
@@ -137,7 +165,17 @@ fun HomeAdminPage(){
                             horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             Card(
-                                modifier = Modifier.size(120.dp, 130.dp),
+                                modifier = Modifier
+                                    .size(120.dp, 130.dp)
+                                    .clickable {
+                                        context.startActivity(
+                                            Intent(
+                                                context,
+                                                UpdateDosenActivity::class.java
+                                            )
+                                        )
+                                        activity?.finish()
+                                    },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
                                 ),
@@ -150,7 +188,17 @@ fun HomeAdminPage(){
                             }
 
                             Card(
-                                modifier = Modifier.size(120.dp, 130.dp),
+                                modifier = Modifier
+                                    .size(120.dp, 130.dp)
+                                    .clickable {
+                                        context.startActivity(
+                                            Intent(
+                                                context,
+                                                DeleteDosenActivity::class.java
+                                            )
+                                        )
+                                        activity?.finish()
+                                    },
                                 colors = CardDefaults.elevatedCardColors(
                                     containerColor = Color.White
                                 ),

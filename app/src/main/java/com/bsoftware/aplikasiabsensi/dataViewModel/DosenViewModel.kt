@@ -32,7 +32,7 @@ class DosenViewModel : ViewModel() {
     }
 
     // create data dosen in here
-    fun createDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, hadir : String?, sakit : String?, izin : String?, alpha : String?, jammasuk : String?,jamkeluar : String?,tanggal : String?,tanggaltidakhadir : String?){
+    fun createDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, hadir : Int?, sakit : Int?, izin : Int?, alpha : Int?, jammasuk : String?,jamkeluar : String?,tanggal : String?,tanggaltidakhadir : String?){
         viewModelScope.launch {
             try {
                 val createDosenData = apiInterfaceDosen.createDosenData(
@@ -49,6 +49,14 @@ class DosenViewModel : ViewModel() {
                     tanggal,
                     tanggaltidakhadir
                 )
+
+                Log.d("CreateDosenData", createDosenData.toString())
+
+                if(!createDosenData.isSuccessful){
+                    Log.e("CreateDosenData Fail",createDosenData.message())
+                } else {
+                    Log.i("CreateDosenData Success", createDosenData.message())
+                }
             } catch (e : Exception){
                 Log.e("createDataDosen() Exception", e.toString())
             }
@@ -56,7 +64,7 @@ class DosenViewModel : ViewModel() {
     }
 
     // update data dosen in here
-    fun updateDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, hadir : String?, sakit : String?, izin : String?, alpha : String?, jammasuk : String?,jamkeluar : String?,tanggal : String?,tanggaltidakhadir : String?){
+    fun updateDataDosen(nidn : String?, nama : String?, matakuliah : String?, jurusanmengajar : String?, hadir : Int?, sakit : Int?, izin : Int?, alpha : Int?, jammasuk : String?,jamkeluar : String?,tanggal : String?,tanggaltidakhadir : String?){
         viewModelScope.launch {
             try{
                 val updateDosenData = apiInterfaceDosen.updateDosenData(
@@ -73,6 +81,7 @@ class DosenViewModel : ViewModel() {
                     tanggal,
                     tanggaltidakhadir
                 )
+
             } catch (e : Exception){
                 Log.e("updateDataDosen() Exception", e.toString())
             }
