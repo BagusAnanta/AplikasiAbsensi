@@ -1,6 +1,10 @@
 package com.bsoftware.aplikasiabsensi
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -21,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,7 +46,7 @@ class UpdateDosenActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    UpdatePage()
+                    UpdatePage(dosenViewModel)
                 }
             }
         }
@@ -64,6 +69,8 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
     var tanggaltidakhadir by remember { mutableStateOf("") }
 
     val tanggal : String? = GetDate().getDateNow()
+    val context : Context = LocalContext.current
+    val activity : Activity? = (LocalContext.current as? Activity)
 
     Column(
         modifier = Modifier
@@ -252,6 +259,11 @@ fun UpdatePage(dosenViewModel: DosenViewModel = DosenViewModel()){
                            tanggal = tanggal,
                            tanggaltidakhadir = tanggaltidakhadir
                        )
+
+                       // intent back into homeAdminActivity
+                       Toast.makeText(context,"Data Berhasil Di Perbarui", Toast.LENGTH_SHORT).show()
+                       context.startActivity(Intent(context,HomeAdminActivity::class.java))
+                       activity?.finish()
                    },
                    modifier = Modifier
                        .fillMaxWidth()

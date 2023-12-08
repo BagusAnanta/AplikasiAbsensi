@@ -9,4 +9,16 @@
     <string name="title_activity_read_dosen">ReadDosenActivity</string>
     <string name="title_activity_update_dosen">UpdateDosenActivity</string>
     <string name="title_activity_delete_dosen">DeleteDosenActivity</string>
+    <string name="nidn">NIDN : %s</string>
+    <string name="name">Nama : %s</string>
+    <string name="matakuliah">MataKuliah : %s</string>
+    <string name="jurusanmengajar">Jurusan Mengajar : %s</string>
+    <string name="hadir">Hadir : %s</string>
+    <string name="sakit">Sakit : %s</string>
+    <string name="izin">Izin : %s</string>
+    <string name="alpha">Alpha : %s</string>
+    <string name="jammasuk">Jam masuk : %s</string>
+    <string name="jamkeluar">Jam Keluar : %s</string>
+    <string name="tanggal">Tanggal : %s</string>
+    <string name="tanggaltidakhadir">Tanggal Tidak Hadir : %s</string>
 </resources>

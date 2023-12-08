@@ -1,6 +1,10 @@
 package com.bsoftware.aplikasiabsensi
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -20,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -66,6 +71,9 @@ fun CreatePage(dosenviewmodel : DosenViewModel = DosenViewModel()){
     val alpha : Int? = 0
     val tanggal : String? = GetDate().getDateNow()
     val tanggaltidakmasuk : String? = "-"
+
+    val context : Context = LocalContext.current
+    val activity : Activity? = (LocalContext.current as? Activity)
 
     Column(
         modifier = Modifier
@@ -177,6 +185,10 @@ fun CreatePage(dosenviewmodel : DosenViewModel = DosenViewModel()){
                     tanggal = tanggal,
                     tanggaltidakhadir = tanggaltidakmasuk
                 )
+                // intent back into homeAdminActivity
+                Toast.makeText(context,"Data Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                context.startActivity(Intent(context,HomeAdminActivity::class.java))
+                activity?.finish()
             },
             modifier = Modifier
                 .fillMaxWidth()
