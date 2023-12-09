@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">AplikasiAbsensi</string>
+    <string name="app_name">Aplikasi Management dan absensi Dosen</string>
     <string name="title_activity_sign_in_mahasiswa">SignInMahasiswaActivity</string>
     <string name="title_activity_main_menu">MainActivityMenu</string>
     <string name="title_activity_sign_in_admin">SignInAdminActivity</string>
+    <string name="title_activity_sign_in_dosen">SignInDosenActivity</string>
     <string name="title_activity_option">OptionActivity</string>
     <string name="title_activity_admin_main">AdminMainActivity</string>
     <string name="title_activity_create_dosen">CreateDosenActivity</string>

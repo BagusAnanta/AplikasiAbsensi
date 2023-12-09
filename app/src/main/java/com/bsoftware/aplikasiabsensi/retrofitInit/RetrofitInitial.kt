@@ -9,11 +9,6 @@ class RetrofitInitial {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    var retrofitMahasiswa = Retrofit.Builder()
-        .baseUrl("http://192.168.100.11/AbsensiJurusan/AbsensiMahasiswa/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
     var retrofitAdmin = Retrofit.Builder()
         .baseUrl("http://192.168.100.11/AbsensiJurusan/AdminLogin/")
         .addConverterFactory(GsonConverterFactory.create())
