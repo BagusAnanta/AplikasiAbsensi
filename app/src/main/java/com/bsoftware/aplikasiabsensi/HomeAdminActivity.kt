@@ -15,9 +15,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bsoftware.aplikasiabsensi.dateClass.GetDate
+import com.bsoftware.aplikasiabsensi.sharePreference.SharePreferenceLogin
 import com.bsoftware.aplikasiabsensi.ui.theme.AplikasiAbsensiTheme
 
 class HomeAdminActivity : ComponentActivity() {
@@ -54,10 +59,9 @@ class HomeAdminActivity : ComponentActivity() {
 
 @Composable
 fun HomeAdminPage(){
-    val name = "User"
-
     val context : Context = LocalContext.current
     val activity : Activity? = (LocalContext.current as? Activity)
+    val sharePref = SharePreferenceLogin(activity!!)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,7 +69,7 @@ fun HomeAdminPage(){
     ){
         Column {
             Text(
-                text = "Halo Admin $name",
+                text = "Halo Admin ${sharePref.getUsername()}",
                 style = TextStyle(
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold
@@ -81,7 +85,7 @@ fun HomeAdminPage(){
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp)
+                    .height(200.dp)
                     .padding(top = 20.dp),
                 shape = RoundedCornerShape(20.dp),
                 elevation = CardDefaults.cardElevation(
@@ -172,7 +176,10 @@ fun HomeAdminPage(){
                                     defaultElevation = 6.dp
                                 )
                             ) {
-                                Column(modifier = Modifier.padding(5.dp)) {
+                                Column(modifier = Modifier
+                                    .padding(5.dp)
+                                    .fillMaxSize()
+                                ) {
                                     Text(
                                         text = "Buat Data Dosen",
                                         style = TextStyle(
@@ -180,6 +187,19 @@ fun HomeAdminPage(){
                                             fontSize = 15.sp
                                         )
                                     )
+
+                                    Column(
+                                        verticalArrangement = Arrangement.Bottom,
+                                        horizontalAlignment = Alignment.Start,
+                                        modifier = Modifier.fillMaxSize()
+                                    ){
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.add_symbol),
+                                            contentDescription = "Add Icon",
+                                            modifier = Modifier
+                                                .size(30.dp, 30.dp)
+                                        )
+                                    }
                                 }
                             }
 
@@ -210,6 +230,19 @@ fun HomeAdminPage(){
                                             fontSize = 15.sp
                                         )
                                     )
+
+                                    Column(
+                                        verticalArrangement = Arrangement.Bottom,
+                                        horizontalAlignment = Alignment.Start,
+                                        modifier = Modifier.fillMaxSize()
+                                    ){
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.read_symbol),
+                                            contentDescription = "Read Icon",
+                                            modifier = Modifier
+                                                .size(30.dp, 30.dp)
+                                        )
+                                    }
                                 }
                             }
                         }
@@ -245,6 +278,19 @@ fun HomeAdminPage(){
                                             fontWeight = FontWeight.Bold
                                         )
                                     )
+
+                                    Column(
+                                        verticalArrangement = Arrangement.Bottom,
+                                        horizontalAlignment = Alignment.Start,
+                                        modifier = Modifier.fillMaxSize()
+                                    ){
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.edit_symbol),
+                                            contentDescription = "Update Icon",
+                                            modifier = Modifier
+                                                .size(30.dp, 30.dp)
+                                        )
+                                    }
                                 }
                             }
 
@@ -275,6 +321,19 @@ fun HomeAdminPage(){
                                             fontWeight = FontWeight.Bold
                                         )
                                     )
+
+                                    Column(
+                                        verticalArrangement = Arrangement.Bottom,
+                                        horizontalAlignment = Alignment.Start,
+                                        modifier = Modifier.fillMaxSize()
+                                    ){
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.delete_symbol),
+                                            contentDescription = "Delete Icon",
+                                            modifier = Modifier
+                                                .size(30.dp, 30.dp)
+                                        )
+                                    }
                                 }
                             }
                         }

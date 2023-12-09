@@ -23,8 +23,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.bsoftware.aplikasiabsensi.dataClass.DosenDataClass
@@ -58,10 +61,26 @@ fun ReadPage(dosenDataList : List<DosenDataClass>) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(10.dp)
+            .padding(20.dp)
     ) {
+        Column{
+            Text(
+                text = "Baca Data Dosen",
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+            Text(
+                text = "Berikut data dosen yang telah anda masukkan",
+                style = TextStyle(
+                    fontSize = 15.sp
+                )
+            )
+        }
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.padding(top = 20.dp)
         ) {
             items(dosenDataList) { item ->
                 Card(

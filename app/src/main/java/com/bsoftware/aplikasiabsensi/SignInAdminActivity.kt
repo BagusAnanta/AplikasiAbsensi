@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.bsoftware.aplikasiabsensi.dataViewModel.AdminViewModel
+import com.bsoftware.aplikasiabsensi.sharePreference.SharePreferenceLogin
 import com.bsoftware.aplikasiabsensi.ui.theme.AplikasiAbsensiTheme
 
 class SignInAdminActivity : ComponentActivity() {
@@ -53,7 +54,17 @@ class SignInAdminActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   SignInPageAdmin(adminViewModel = adminViewModel, lifecycleOwner = this)
+                    val context : Context = LocalContext.current
+                    val activity : Activity? = (LocalContext.current as? Activity)
+
+                    if(SharePreferenceLogin(activity!!).getLoginState()){
+                        // if user already login
+                        context.startActivity(Intent(context,HomeAdminActivity::class.java))
+                        activity.finish()
+                    } else {
+                        // if user not login
+                        SignInPageAdmin(adminViewModel = adminViewModel, lifecycleOwner = this)
+                    }
                 }
             }
         }
@@ -129,8 +140,10 @@ fun SignInPageAdmin(adminViewModel : AdminViewModel, lifecycleOwner: LifecycleOw
 
                         if(username == usernameData && password == passwordData){
                             // if a username and password equals like database we intent to admin
+                            SharePreferenceLogin(activity!!).setLoginState(true)
+                            SharePreferenceLogin(activity).setUsername(username)
                             context.startActivity(Intent(context,HomeAdminActivity::class.java))
-                            activity?.finish()
+                            activity.finish()
 
                         } else {
                             // toast username and password wrong
